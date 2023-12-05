@@ -81,3 +81,5 @@ C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.csp
 C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.csproj.CopyComplete
 C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.dll
 C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.pdb
+C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.Migrations.InitialCreate.resources
+C:\Users\abidm\source\repos\HotelProject\HotelProject\obj\Debug\HotelProject.csproj.GenerateResource.cache

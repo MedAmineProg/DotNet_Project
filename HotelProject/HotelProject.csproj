@@ -130,12 +130,25 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\ImageHotelsController.cs" />
+    <Compile Include="Controllers\ImageRoomsController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\HotelContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312041919034_InitialCreate.cs" />
+    <Compile Include="Migrations\202312041919034_InitialCreate.designer.cs">
+      <DependentUpon>202312041919034_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\ImageHotel.cs" />
+    <Compile Include="Models\ImageRoom.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +212,26 @@
     <Content Include="Views\ImageHotels\Details.cshtml" />
     <Content Include="Views\ImageHotels\Edit.cshtml" />
     <Content Include="Views\ImageHotels\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\ImageRooms\Create.cshtml" />
+    <Content Include="Views\ImageRooms\Delete.cshtml" />
+    <Content Include="Views\ImageRooms\Details.cshtml" />
+    <Content Include="Views\ImageRooms\Edit.cshtml" />
+    <Content Include="Views\ImageRooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -229,6 +262,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202312041919034_InitialCreate.resx">
+      <DependentUpon>202312041919034_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

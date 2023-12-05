@@ -1,0 +1,58 @@
+﻿@model HotelProject.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prix_Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prix_Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Fin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
