@@ -232,6 +232,7 @@
     <Content Include="Views\ImageRooms\Details.cshtml" />
     <Content Include="Views\ImageRooms\Edit.cshtml" />
     <Content Include="Views\ImageRooms\Index.cshtml" />
+    <Content Include="Views\ImageRooms\RoomImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

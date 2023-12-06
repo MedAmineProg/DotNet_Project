@@ -9,7 +9,8 @@ namespace HotelProject.Models
     public class ImageRoom
     {
         public int ID { get; set; }
-        [NotMapped] public HttpPostedFileBase Image { get; set; }
+        public string Title { get; set; }
+        public byte[] Image { get; set; }
         public int RoomId { get; set; }
         public virtual Room Room { get; set; }
     }

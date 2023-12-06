@@ -129,5 +129,10 @@ namespace HotelProject.Controllers
             }
             base.Dispose(disposing);
         }
+
+        internal int UploadImageInDataBase(HttpPostedFileBase file, ImageRoom imageRoom)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

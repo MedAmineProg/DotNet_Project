@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<HotelProject.Models.ImageRoom>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -37,9 +38,16 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" height="100" width="200" />
-            </td>
+                @if (item.RoomId == Convert.ToInt32(Request.QueryString["Roomid"]))
+                {
 
+                    <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" height="100" width="200" />
+                }
+                else
+                {
+                    <p>No image for this room.</p>
+                }
+            </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
@@ -47,6 +55,7 @@
             </td>
         </tr>
     }
+
 
 </table>
 

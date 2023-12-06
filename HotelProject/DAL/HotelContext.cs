@@ -10,6 +10,7 @@ namespace HotelProject.DAL
 {
     public class HotelContext : DbContext
     {
+
         public HotelContext() : base("HotelContext")
         {
         }
