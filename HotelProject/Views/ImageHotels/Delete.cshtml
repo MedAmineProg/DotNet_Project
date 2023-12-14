@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            <img src="@Url.Action("RetrieveImage", "ImageHotels", new { id = Model.ID })" alt="" style="max-height: 300px; max-width: 600px;" />
         </dd>
 
     </dl>

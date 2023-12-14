@@ -217,11 +217,6 @@
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
-    <Content Include="Views\Reservations\Create.cshtml" />
-    <Content Include="Views\Reservations\Delete.cshtml" />
-    <Content Include="Views\Reservations\Details.cshtml" />
-    <Content Include="Views\Reservations\Edit.cshtml" />
-    <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -233,6 +228,12 @@
     <Content Include="Views\ImageRooms\Edit.cshtml" />
     <Content Include="Views\ImageRooms\Index.cshtml" />
     <Content Include="Views\ImageRooms\RoomImage.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\ImageHotels\HotelImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

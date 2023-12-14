@@ -28,7 +28,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Where(r => r.RoomId == Convert.ToInt32(Request.QueryString["Roomid"])))
     {
         <tr>
             <td>
@@ -38,15 +38,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @if (item.RoomId == Convert.ToInt32(Request.QueryString["Roomid"]))
-                {
-
-                    <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" height="100" width="200" />
-                }
-                else
-                {
-                    <p>No image for this room.</p>
-                }
+                <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" style="max-height: 300px; max-width: 600px;" />
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
@@ -55,6 +47,16 @@
             </td>
         </tr>
     }
+
+    @if (!Model.Any(r => r.RoomId == Convert.ToInt32(Request.QueryString["Roomid"])))
+    {
+        <tr>
+            <td colspan="4">
+                <p>No image for this room.</p>
+            </td>
+        </tr>
+    }
+
 
 
 </table>

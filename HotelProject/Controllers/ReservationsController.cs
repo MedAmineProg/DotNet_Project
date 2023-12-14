@@ -18,7 +18,7 @@ namespace HotelProject.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
-            var reservation = db.Reservation.Include(r => r.Room);
+            var reservation = db.Reservation.Include(r => r.Room).Include(r => r.User);
             return View(reservation.ToList());
         }
 
@@ -41,6 +41,7 @@ namespace HotelProject.Controllers
         public ActionResult Create()
         {
             ViewBag.RoomId = new SelectList(db.Room, "ID", "Name");
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name");
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace HotelProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Prix_Total,service,Date_Debut,Data_Fin,RoomId")] Reservation reservation)
+        public ActionResult Create([Bind(Include = "Id,Prix_Total,Service,Date_Debut,Date_Fin,UserId,RoomId")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +60,7 @@ namespace HotelProject.Controllers
             }
 
             ViewBag.RoomId = new SelectList(db.Room, "ID", "Name", reservation.RoomId);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", reservation.UserId);
             return View(reservation);
         }
 
@@ -75,6 +77,7 @@ namespace HotelProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.RoomId = new SelectList(db.Room, "ID", "Name", reservation.RoomId);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", reservation.UserId);
             return View(reservation);
         }
 
@@ -83,7 +86,7 @@ namespace HotelProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Prix_Total,service,Date_Debut,Data_Fin,RoomId")] Reservation reservation)
+        public ActionResult Edit([Bind(Include = "Id,Prix_Total,Service,Date_Debut,Date_Fin,UserId,RoomId")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +95,7 @@ namespace HotelProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RoomId = new SelectList(db.Room, "ID", "Name", reservation.RoomId);
+            ViewBag.UserId = new SelectList(db.User, "Id", "Name", reservation.UserId);
             return View(reservation);
         }
 

@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" height="100" width="200" />
+                <img src="@Url.Action("RetrieveImage", "ImageRooms", new { id = item.ID })" alt="" style="max-height: 300px; max-width: 600px;" />
             </td>
 
             <td>

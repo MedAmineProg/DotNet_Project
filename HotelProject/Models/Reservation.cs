@@ -13,7 +13,7 @@ namespace HotelProject.Models
         public DateTime Date_Debut { get; set; }
         public DateTime Date_Fin { get; set; }
 
-        public int User_Id { get; set; }
+        public int UserId { get; set; }
         public virtual User User { get; set; }
 
         public int RoomId { get; set; }

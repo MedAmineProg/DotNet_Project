@@ -26,12 +26,12 @@
             @Html.DisplayFor(modelItem => item.Hotel.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Image)
+            <img src="@Url.Action("RetrieveImage", "ImageHotels", new { id = item.ID })" alt="" style="max-height: 300px; max-width: 600px;" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) 
         </td>
     </tr>
 }

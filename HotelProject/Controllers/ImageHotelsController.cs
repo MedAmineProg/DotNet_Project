@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,10 +14,60 @@ namespace HotelProject.Controllers
 {
     public class ImageHotelsController : Controller
     {
+        public int UploadImageInDataBase(HttpPostedFileBase file, ImageHotel imageHotel)
+        {
+            imageHotel.Image = ConvertToBytes(file);
+            var Content = new ImageHotel
+            {
+                Image = imageHotel.Image,
+                HotelID = imageHotel.HotelID
+
+            };
+            db.HotelImages.Add(Content);
+            int i = db.SaveChanges();
+            if (i == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            var q = from temp in db.HotelImages where temp.ID == Id select temp.Image;
+            byte[] cover = q.First();
+            return cover;
+        }
         private HotelContext db = new HotelContext();
 
         // GET: ImageHotels
         public ActionResult Index()
+        {
+            var hotelImages = db.HotelImages.Include(i => i.Hotel);
+            return View(hotelImages.ToList());
+        }
+        public ActionResult HotelImage()
         {
             var hotelImages = db.HotelImages.Include(i => i.Hotel);
             return View(hotelImages.ToList());
@@ -49,17 +100,30 @@ namespace HotelProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Image,HotelID")] ImageHotel imageHotel)
+        public ActionResult Create([Bind(Include = "ID,HotelID")] ImageHotel imageHotel)
         {
-            if (ModelState.IsValid)
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            ImageHotelsController service = new ImageHotelsController();
+            int i = service.UploadImageInDataBase(file, imageHotel);
+            if (i == 1 && ModelState.IsValid)
             {
                 db.HotelImages.Add(imageHotel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.HotelID = new SelectList(db.Hotels, "ID", "Name", imageHotel.HotelID);
+
+            ViewBag.RoomId = new SelectList(db.Room, "ID", "Name", imageHotel.HotelID);
             return View(imageHotel);
+            /* if (ModelState.IsValid)
+             {
+                 db.HotelImages.Add(imageHotel);
+                 db.SaveChanges();
+                 return RedirectToAction("Index");
+             }
+
+             ViewBag.HotelID = new SelectList(db.Hotels, "ID", "Name", imageHotel.HotelID);
+             return View(imageHotel);*/
         }
 
         // GET: ImageHotels/Edit/5
@@ -128,11 +192,6 @@ namespace HotelProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        internal int UploadImageInDataBase(HttpPostedFileBase file, ImageRoom imageRoom)
-        {
-            throw new NotImplementedException();
         }
     }
 }
